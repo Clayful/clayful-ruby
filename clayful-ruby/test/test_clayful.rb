@@ -51,13 +51,13 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 				'X-Extra' => 'Extra'
 			}
 		}), {
-			'Accept-Language'                  => 'ko',
-			'Accept-Currency'                  => 'KRW',
-			'Accept-Time-Zone'                 => 'Asia/Seoul',
-			'Authorization'                    => 'Bearer client_token',
-			'X-Clayful-Customer-Authorization' => 'Bearer customer_token',
-			'X-Clayful-Error-Language'         => 'ko',
-			'X-Extra'                          => 'Extra'
+			'Accept-Language'          => 'ko',
+			'Accept-Currency'          => 'KRW',
+			'Accept-Time-Zone'         => 'Asia/Seoul',
+			'Authorization'            => 'Bearer client_token',
+			'X-Clayful-Customer'       => 'customer_token',
+			'X-Clayful-Error-Language' => 'ko',
+			'X-Extra'                  => 'Extra'
 		})
 
 	end
@@ -77,13 +77,15 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 		result = Clayful.normalize_query_values({
 			'string'  => 'string',
 			'number'  => 100,
-			'boolean' => true
+			'boolean' => true,
+			'special' => ' +&',
 		})
 
 		assert_equal(result, {
 			'string'  => 'string',
 			'number'  => '100',
-			'boolean' => 'true'
+			'boolean' => 'true',
+			'special' => '%20%2B%26',
 		})
 
 	end
@@ -561,15 +563,15 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 		})
 
 		assert_equal(Clayful.default_headers, {
-			'Accept-Encoding'                  => 'gzip', # default value
-			'Accept-Language'                  => 'ko',
-			'Accept-Currency'                  => 'KRW',
-			'Accept-Time-Zone'                 => 'Asia/Seoul',
-			'Authorization'                    => 'Bearer client_token',
-			'X-Clayful-Customer-Authorization' => 'Bearer customer_token',
-			'X-Clayful-Error-Language'         => 'ko',
-			'X-Clayful-SDK'                    => 'clayful-ruby',
-			'X-Extra'                          => 'Extra'
+			'Accept-Encoding'          => 'gzip', # default value
+			'Accept-Language'          => 'ko',
+			'Accept-Currency'          => 'KRW',
+			'Accept-Time-Zone'         => 'Asia/Seoul',
+			'Authorization'            => 'Bearer client_token',
+			'X-Clayful-Customer'       => 'customer_token',
+			'X-Clayful-Error-Language' => 'ko',
+			'X-Clayful-SDK'            => 'clayful-ruby',
+			'X-Extra'                  => 'Extra'
 		})
 
 	end

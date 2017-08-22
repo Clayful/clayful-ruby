@@ -1,3 +1,4 @@
+require 'erb'
 require_relative './exception'
 require_relative './requester'
 require_relative './models/binder'
@@ -55,7 +56,7 @@ module Clayful
 		end
 
 		if o['customer']
-			headers['X-Clayful-Customer-Authorization'] = 'Bearer ' + o['customer']
+			headers['X-Clayful-Customer'] = o['customer']
 		end
 
 		if o['error_language']
@@ -80,7 +81,7 @@ module Clayful
 
 	def self.normalize_query_values(query = {})
 
-		Hash[ query.map { |k, v| [k.to_s, v.to_s] } ]
+		Hash[ query.map { |k, v| [k.to_s, ERB::Util.url_encode(v.to_s)] } ]
 
 	end
 
