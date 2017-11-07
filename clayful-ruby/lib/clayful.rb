@@ -47,8 +47,8 @@ module Clayful
 			headers['Accept-Currency'] = o['currency']
 		end
 
-		if o['time_zone']
-			headers['Accept-Time-Zone'] = o['time_zone']
+		if o['timeZone']
+			headers['Accept-Time-Zone'] = o['timeZone']
 		end
 
 		if o['client']
@@ -59,8 +59,8 @@ module Clayful
 			headers['X-Clayful-Customer'] = o['customer']
 		end
 
-		if o['error_language']
-			headers['X-Clayful-Error-Language'] = o['error_language']
+		if o['errorLanguage']
+			headers['X-Clayful-Error-Language'] = o['errorLanguage']
 		end
 
 		if o['headers']

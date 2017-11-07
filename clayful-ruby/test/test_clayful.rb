@@ -43,10 +43,10 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 		assert_equal(Clayful.options_to_headers({
 			'language'       => 'ko',
 			'currency'       => 'KRW',
-			'time_zone'      => 'Asia/Seoul',
+			'timeZone'       => 'Asia/Seoul',
 			'client'         => 'client_token',
 			'customer'       => 'customer_token',
-			'error_language' => 'ko',
+			'errorLanguage'  => 'ko',
 			'headers'        => {
 				'X-Extra' => 'Extra'
 			}
@@ -553,10 +553,10 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 		Clayful.config({
 			'language'       => 'ko',
 			'currency'       => 'KRW',
-			'time_zone'      => 'Asia/Seoul',
+			'timeZone'       => 'Asia/Seoul',
 			'client'         => 'client_token',
 			'customer'       => 'customer_token',
-			'error_language' => 'ko',
+			'errorLanguage'  => 'ko',
 			'headers'        => {
 				'X-Extra' => 'Extra'
 			}
