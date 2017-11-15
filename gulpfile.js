@@ -5,7 +5,7 @@ const gulp = require('gulp');
 const rename = require('gulp-rename');
 const clean = require('gulp-clean');
 const mustache = require('gulp-mustache');
-const models = require('clayful-lib-spec/data/spec.json');
+const models = require('clayful-lib-spec');
 
 const ext = '.rb';
 
