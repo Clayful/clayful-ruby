@@ -9,7 +9,8 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 		# Reset states
 		Clayful.default_headers = {
 			'Accept-Encoding' => 'gzip',
-			'X-Clayful-SDK'   => 'clayful-ruby'
+			'User-Agent'      => 'clayful-ruby',
+			'Clayful-SDK'     => 'clayful-ruby'
 		}
 		Clayful.listeners = {
 			'request'  => [],
@@ -23,7 +24,8 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 		assert_equal(Clayful.base_url, 'https://api.clayful.io')
 		assert_equal(Clayful.default_headers, {
 			'Accept-Encoding' => 'gzip',
-			'X-Clayful-SDK'   => 'clayful-ruby'
+			'User-Agent'      => 'clayful-ruby',
+			'Clayful-SDK'     => 'clayful-ruby'
 		})
 		assert(Clayful.plugins['request'].is_a? Proc)
 		assert_equal(Clayful.listeners, {
@@ -46,7 +48,7 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 			'timeZone'       => 'Asia/Seoul',
 			'client'         => 'client_token',
 			'customer'       => 'customer_token',
-			'errorLanguage'  => 'ko',
+			'debugLanguage'  => 'ko',
 			'headers'        => {
 				'X-Extra' => 'Extra'
 			}
@@ -55,8 +57,8 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 			'Accept-Currency'          => 'KRW',
 			'Accept-Time-Zone'         => 'Asia/Seoul',
 			'Authorization'            => 'Bearer client_token',
-			'X-Clayful-Customer'       => 'customer_token',
-			'X-Clayful-Error-Language' => 'ko',
+			'Authorization-Customer'   => 'customer_token',
+			'Accept-Debug-Language'    => 'ko',
 			'X-Extra'                  => 'Extra'
 		})
 
@@ -245,8 +247,9 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 				'query'       => {},
 				'headers'     => {
 					'Accept-Encoding' => 'gzip',
+					'User-Agent'      => 'clayful-ruby',
 					'Accept-Currency' => 'KRW',
-					'X-Clayful-SDK'   => 'clayful-ruby'
+					'Clayful-SDK'     => 'clayful-ruby'
 				},
 				'payload'        => nil,
 				'uses_form_data' => false,
@@ -271,8 +274,9 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 				'query'       => {},
 				'headers'     => {
 					'Accept-Encoding' => 'gzip',
+					'User-Agent'      => 'clayful-ruby',
 					'Accept-Currency' => 'KRW',
-					'X-Clayful-SDK'   => 'clayful-ruby'
+					'Clayful-SDK'     => 'clayful-ruby'
 				},
 				'payload'        => nil,
 				'uses_form_data' => false,
@@ -290,7 +294,8 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 
 		assert_equal(Clayful.default_headers, {
 			'Accept-Encoding' => 'gzip',
-			'X-Clayful-SDK'   => 'clayful-ruby'
+			'User-Agent'      => 'clayful-ruby',
+			'Clayful-SDK'     => 'clayful-ruby'
 		})
 
 		response = Clayful.call_api({
@@ -310,7 +315,8 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 
 		assert_equal(Clayful.default_headers, {
 			'Accept-Encoding' => 'gzip',
-			'X-Clayful-SDK'   => 'clayful-ruby'
+			'User-Agent'      => 'clayful-ruby',
+			'Clayful-SDK'     => 'clayful-ruby'
 		})
 
 	end
@@ -336,8 +342,9 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 				'query'       => {},
 				'headers'     => {
 					'Accept-Encoding' => 'gzip',
+					'User-Agent'      => 'clayful-ruby',
 					'Accept-Language' => 'ko',
-					'X-Clayful-SDK'   => 'clayful-ruby'
+					'Clayful-SDK'     => 'clayful-ruby'
 				},
 				'payload'        => { 'file' => 'file' },
 				'uses_form_data' => true,
@@ -362,8 +369,9 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 				'query'       => {},
 				'headers'     => {
 					'Accept-Encoding' => 'gzip',
+					'User-Agent'      => 'clayful-ruby',
 					'Accept-Language' => 'ko',
-					'X-Clayful-SDK'   => 'clayful-ruby'
+					'Clayful-SDK'     => 'clayful-ruby'
 				},
 				'payload'        => { 'file' => 'file' },
 				'uses_form_data' => true,
@@ -381,7 +389,8 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 
 		assert_equal(Clayful.default_headers, {
 			'Accept-Encoding' => 'gzip',
-			'X-Clayful-SDK'   => 'clayful-ruby'
+			'User-Agent'      => 'clayful-ruby',
+			'Clayful-SDK'     => 'clayful-ruby'
 		})
 
 		response = Clayful.call_api({
@@ -405,7 +414,8 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 
 		assert_equal(Clayful.default_headers, {
 			'Accept-Encoding' => 'gzip',
-			'X-Clayful-SDK'   => 'clayful-ruby'
+			'User-Agent'      => 'clayful-ruby',
+			'Clayful-SDK'     => 'clayful-ruby'
 		})
 
 	end
@@ -433,8 +443,9 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 				'query'       => {},
 				'headers'     => {
 					'Accept-Encoding' => 'gzip',
+					'User-Agent'      => 'clayful-ruby',
 					'Accept-Currency' => 'KRW',
-					'X-Clayful-SDK'   => 'clayful-ruby'
+					'Clayful-SDK'     => 'clayful-ruby'
 				},
 				'payload'        => nil,
 				'uses_form_data' => false,
@@ -459,8 +470,9 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 				'query'       => {},
 				'headers'     => {
 					'Accept-Encoding' => 'gzip',
+					'User-Agent'      => 'clayful-ruby',
 					'Accept-Currency' => 'KRW',
-					'X-Clayful-SDK'   => 'clayful-ruby'
+					'Clayful-SDK'     => 'clayful-ruby'
 				},
 				'payload'        => nil,
 				'uses_form_data' => false,
@@ -556,7 +568,7 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 			'timeZone'       => 'Asia/Seoul',
 			'client'         => 'client_token',
 			'customer'       => 'customer_token',
-			'errorLanguage'  => 'ko',
+			'debugLanguage'  => 'ko',
 			'headers'        => {
 				'X-Extra' => 'Extra'
 			}
@@ -568,9 +580,10 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 			'Accept-Currency'          => 'KRW',
 			'Accept-Time-Zone'         => 'Asia/Seoul',
 			'Authorization'            => 'Bearer client_token',
-			'X-Clayful-Customer'       => 'customer_token',
-			'X-Clayful-Error-Language' => 'ko',
-			'X-Clayful-SDK'            => 'clayful-ruby',
+			'Authorization-Customer'   => 'customer_token',
+			'Accept-Debug-Language'    => 'ko',
+			'User-Agent'               => 'clayful-ruby',
+			'Clayful-SDK'              => 'clayful-ruby',
 			'X-Extra'                  => 'Extra'
 		})
 

@@ -9,7 +9,8 @@ module Clayful
 
 	@@default_headers = {
 		'Accept-Encoding' => 'gzip',
-		'X-Clayful-SDK'   => 'clayful-ruby'
+		'User-Agent'      => 'clayful-ruby',
+		'Clayful-SDK'     => 'clayful-ruby'
 	}
 
 	@@plugins = {
@@ -56,11 +57,11 @@ module Clayful
 		end
 
 		if o['customer']
-			headers['X-Clayful-Customer'] = o['customer']
+			headers['Authorization-Customer'] = o['customer']
 		end
 
-		if o['errorLanguage']
-			headers['X-Clayful-Error-Language'] = o['errorLanguage']
+		if o['debugLanguage']
+			headers['Accept-Debug-Language'] = o['debugLanguage']
 		end
 
 		if o['headers']
