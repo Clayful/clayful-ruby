@@ -1,6 +1,6 @@
 # Clayful Ruby SDK
 
-Official Ruby SDK for [clayful.io](http://clayful.io).
+Official Ruby SDK for [clayful.io](https://clayful.io).
 
 ## Tests
 
@@ -10,4 +10,4 @@ ruby test/run.rb
 
 ## Links
 
-- [API & SDK Documentation](http://doc.clayful.io)
+- [API & SDK Documentation](https://dev.clayful.io)
