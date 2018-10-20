@@ -48,8 +48,8 @@ module Clayful
 			headers['Accept-Currency'] = o['currency']
 		end
 
-		if o['timeZone']
-			headers['Accept-Time-Zone'] = o['timeZone']
+		if o['time_zone']
+			headers['Accept-Time-Zone'] = o['time_zone']
 		end
 
 		if o['client']
@@ -60,8 +60,12 @@ module Clayful
 			headers['Authorization-Customer'] = o['customer']
 		end
 
-		if o['debugLanguage']
-			headers['Accept-Debug-Language'] = o['debugLanguage']
+		if o['reCAPTCHA']
+			headers['reCAPTCHA-Response'] = o['reCAPTCHA']
+		end
+
+		if o['debug_language']
+			headers['Accept-Debug-Language'] = o['debug_language']
 		end
 
 		if o['headers']

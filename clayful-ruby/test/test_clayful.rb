@@ -45,10 +45,11 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 		assert_equal(Clayful.options_to_headers({
 			'language'       => 'ko',
 			'currency'       => 'KRW',
-			'timeZone'       => 'Asia/Seoul',
+			'time_zone'      => 'Asia/Seoul',
 			'client'         => 'client_token',
 			'customer'       => 'customer_token',
-			'debugLanguage'  => 'ko',
+			'reCAPTCHA'      => 'response',
+			'debug_language' => 'ko',
 			'headers'        => {
 				'X-Extra' => 'Extra'
 			}
@@ -58,6 +59,7 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 			'Accept-Time-Zone'         => 'Asia/Seoul',
 			'Authorization'            => 'Bearer client_token',
 			'Authorization-Customer'   => 'customer_token',
+			'reCAPTCHA-Response'       => 'response',
 			'Accept-Debug-Language'    => 'ko',
 			'X-Extra'                  => 'Extra'
 		})
@@ -565,10 +567,11 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 		Clayful.config({
 			'language'       => 'ko',
 			'currency'       => 'KRW',
-			'timeZone'       => 'Asia/Seoul',
+			'time_zone'      => 'Asia/Seoul',
 			'client'         => 'client_token',
 			'customer'       => 'customer_token',
-			'debugLanguage'  => 'ko',
+			'reCAPTCHA'      => 'response',
+			'debug_language' => 'ko',
 			'headers'        => {
 				'X-Extra' => 'Extra'
 			}
@@ -581,6 +584,7 @@ class ClayfulMainModuleTest < Test::Unit::TestCase
 			'Accept-Time-Zone'         => 'Asia/Seoul',
 			'Authorization'            => 'Bearer client_token',
 			'Authorization-Customer'   => 'customer_token',
+			'reCAPTCHA-Response'       => 'response',
 			'Accept-Debug-Language'    => 'ko',
 			'User-Agent'               => 'clayful-ruby',
 			'Clayful-SDK'              => 'clayful-ruby',
