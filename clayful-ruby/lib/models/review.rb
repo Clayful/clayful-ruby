@@ -13,19 +13,6 @@ module Clayful
 			@@path
 		end
 
-		def self.query(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'query',
-				'http_method'      => 'GET',
-				'path'             => '/v1/products/reviews',
-				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
 		def self.list(*args)
 
 			Clayful.call_api({
@@ -52,6 +39,19 @@ module Clayful
 
 		end
 
+		def self.list_published(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'list_published',
+				'http_method'      => 'GET',
+				'path'             => '/v1/products/reviews/published',
+				'params'           => [],
+				'args'             => args
+			})
+
+		end
+
 		def self.get(*args)
 
 			Clayful.call_api({
@@ -65,53 +65,27 @@ module Clayful
 
 		end
 
-		def self.query_by_product(*args)
+		def self.count_published(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'query_by_product',
+				'method_name'      => 'count_published',
 				'http_method'      => 'GET',
-				'path'             => '/v1/products/{productId}/reviews',
-				'params'           => ['productId', ],
+				'path'             => '/v1/products/reviews/published/count',
+				'params'           => [],
 				'args'             => args
 			})
 
 		end
 
-		def self.list_by_product(*args)
+		def self.get_published(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'list_by_product',
+				'method_name'      => 'get_published',
 				'http_method'      => 'GET',
-				'path'             => '/v1/products/{productId}/reviews',
-				'params'           => ['productId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.query_by_customer(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'query_by_customer',
-				'http_method'      => 'GET',
-				'path'             => '/v1/customers/{customerId}/products/reviews',
-				'params'           => ['customerId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.list_by_customer(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'list_by_customer',
-				'http_method'      => 'GET',
-				'path'             => '/v1/customers/{customerId}/products/reviews',
-				'params'           => ['customerId', ],
+				'path'             => '/v1/products/reviews/published/{reviewId}',
+				'params'           => ['reviewId', ],
 				'args'             => args
 			})
 
@@ -130,11 +104,11 @@ module Clayful
 
 		end
 
-		def self.create_as_me(*args)
+		def self.create_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'create_as_me',
+				'method_name'      => 'create_for_me',
 				'http_method'      => 'POST',
 				'path'             => '/v1/me/products/reviews',
 				'params'           => [],
@@ -149,20 +123,20 @@ module Clayful
 				'model_name'       => @@name,
 				'method_name'      => 'flag',
 				'http_method'      => 'POST',
-				'path'             => '/v1/products/reviews/{reviewId}/flag',
+				'path'             => '/v1/products/reviews/{reviewId}/flags',
 				'params'           => ['reviewId', ],
 				'args'             => args
 			})
 
 		end
 
-		def self.flag_as_me(*args)
+		def self.flag_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'flag_as_me',
+				'method_name'      => 'flag_for_me',
 				'http_method'      => 'POST',
-				'path'             => '/v1/me/products/reviews/{reviewId}/flag',
+				'path'             => '/v1/me/products/reviews/{reviewId}/flags',
 				'params'           => ['reviewId', ],
 				'without_payload'  => true,
 				'args'             => args
@@ -183,55 +157,15 @@ module Clayful
 
 		end
 
-		def self.cancel_flag(*args)
+		def self.helped_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'cancel_flag',
-				'http_method'      => 'POST',
-				'path'             => '/v1/products/reviews/{reviewId}/flag/cancel',
-				'params'           => ['reviewId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.cancel_flag_as_me(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'cancel_flag_as_me',
-				'http_method'      => 'POST',
-				'path'             => '/v1/me/products/reviews/{reviewId}/flag/cancel',
-				'params'           => ['reviewId', ],
-				'without_payload'  => true,
-				'args'             => args
-			})
-
-		end
-
-		def self.helped_as_me(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'helped_as_me',
+				'method_name'      => 'helped_for_me',
 				'http_method'      => 'POST',
 				'path'             => '/v1/me/products/reviews/{reviewId}/helped/{upDown}',
 				'params'           => ['reviewId', 'upDown', ],
 				'without_payload'  => true,
-				'args'             => args
-			})
-
-		end
-
-		def self.push_to_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/products/reviews/{reviewId}/meta/{field}/push',
-				'params'           => ['reviewId', 'field', ],
 				'args'             => args
 			})
 
@@ -250,19 +184,6 @@ module Clayful
 
 		end
 
-		def self.cancel_helped(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'cancel_helped',
-				'http_method'      => 'POST',
-				'path'             => '/v1/products/reviews/{reviewId}/helped/{upDown}/cancel',
-				'params'           => ['reviewId', 'upDown', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.increase_metafield(*args)
 
 			Clayful.call_api({
@@ -276,15 +197,14 @@ module Clayful
 
 		end
 
-		def self.cancel_helped_as_me(*args)
+		def self.push_to_metafield(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'cancel_helped_as_me',
+				'method_name'      => 'push_to_metafield',
 				'http_method'      => 'POST',
-				'path'             => '/v1/me/products/reviews/{reviewId}/helped/{upDown}/cancel',
-				'params'           => ['reviewId', 'upDown', ],
-				'without_payload'  => true,
+				'path'             => '/v1/products/reviews/{reviewId}/meta/{field}/push',
+				'params'           => ['reviewId', 'field', ],
 				'args'             => args
 			})
 
@@ -303,27 +223,14 @@ module Clayful
 
 		end
 
-		def self.update_as_me(*args)
+		def self.update_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'update_as_me',
+				'method_name'      => 'update_for_me',
 				'http_method'      => 'PUT',
 				'path'             => '/v1/me/products/reviews/{reviewId}',
 				'params'           => ['reviewId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.update_as_customer(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'update_as_customer',
-				'http_method'      => 'PUT',
-				'path'             => '/v1/customers/{customerId}/products/reviews/{reviewId}',
-				'params'           => ['customerId', 'reviewId', ],
 				'args'             => args
 			})
 
@@ -342,14 +249,40 @@ module Clayful
 
 		end
 
-		def self.delete_as_me(*args)
+		def self.delete_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'delete_as_me',
+				'method_name'      => 'delete_for_me',
 				'http_method'      => 'DELETE',
 				'path'             => '/v1/me/products/reviews/{reviewId}',
 				'params'           => ['reviewId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.cancel_flag_for_me(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'cancel_flag_for_me',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/me/products/reviews/{reviewId}/flags',
+				'params'           => ['reviewId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.cancel_flag(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'cancel_flag',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/reviews/{reviewId}/flags/{customerId}',
+				'params'           => ['reviewId', 'customerId', ],
 				'args'             => args
 			})
 
@@ -363,6 +296,32 @@ module Clayful
 				'http_method'      => 'DELETE',
 				'path'             => '/v1/products/reviews/{reviewId}/meta/{field}',
 				'params'           => ['reviewId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.cancel_helped_for_me(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'cancel_helped_for_me',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/me/products/reviews/{reviewId}/helped/{upDown}',
+				'params'           => ['reviewId', 'upDown', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.cancel_helped(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'cancel_helped',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/reviews/{reviewId}/helped/{upDown}/{customerId}',
+				'params'           => ['reviewId', 'upDown', 'customerId', ],
 				'args'             => args
 			})
 

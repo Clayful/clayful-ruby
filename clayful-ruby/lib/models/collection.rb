@@ -13,19 +13,6 @@ module Clayful
 			@@path
 		end
 
-		def self.query(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'query',
-				'http_method'      => 'GET',
-				'path'             => '/v1/collections',
-				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
 		def self.list(*args)
 
 			Clayful.call_api({
@@ -65,40 +52,14 @@ module Clayful
 
 		end
 
-		def self.query_by_parent(*args)
+		def self.push_to_metafield(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'query_by_parent',
-				'http_method'      => 'GET',
-				'path'             => '/v1/collections/{collectionId}/collections',
-				'params'           => ['collectionId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.list_by_parent(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'list_by_parent',
-				'http_method'      => 'GET',
-				'path'             => '/v1/collections/{collectionId}/collections',
-				'params'           => ['collectionId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.create(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'create',
+				'method_name'      => 'push_to_metafield',
 				'http_method'      => 'POST',
-				'path'             => '/v1/collections',
-				'params'           => [],
+				'path'             => '/v1/collections/{collectionId}/meta/{field}/push',
+				'params'           => ['collectionId', 'field', ],
 				'args'             => args
 			})
 
@@ -117,19 +78,6 @@ module Clayful
 
 		end
 
-		def self.push_to_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/collections/{collectionId}/meta/{field}/push',
-				'params'           => ['collectionId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.pull_from_metafield(*args)
 
 			Clayful.call_api({
@@ -138,32 +86,6 @@ module Clayful
 				'http_method'      => 'POST',
 				'path'             => '/v1/collections/{collectionId}/meta/{field}/pull',
 				'params'           => ['collectionId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.update(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'update',
-				'http_method'      => 'PUT',
-				'path'             => '/v1/collections/{collectionId}',
-				'params'           => ['collectionId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.delete(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'delete',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/collections/{collectionId}',
-				'params'           => ['collectionId', ],
 				'args'             => args
 			})
 

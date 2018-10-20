@@ -13,19 +13,6 @@ module Clayful
 			@@path
 		end
 
-		def self.query(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'query',
-				'http_method'      => 'GET',
-				'path'             => '/v1/coupons',
-				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
 		def self.list(*args)
 
 			Clayful.call_api({
@@ -65,6 +52,19 @@ module Clayful
 
 		end
 
+		def self.pull_from_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'pull_from_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/coupons/{couponId}/meta/{field}/pull',
+				'params'           => ['couponId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
 		def self.increase_metafield(*args)
 
 			Clayful.call_api({
@@ -85,19 +85,6 @@ module Clayful
 				'method_name'      => 'push_to_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/coupons/{couponId}/meta/{field}/push',
-				'params'           => ['couponId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.pull_from_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'pull_from_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/coupons/{couponId}/meta/{field}/pull',
 				'params'           => ['couponId', 'field', ],
 				'args'             => args
 			})

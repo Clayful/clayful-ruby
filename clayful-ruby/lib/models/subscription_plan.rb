@@ -1,9 +1,9 @@
 module Clayful
 
-	class Warehouse
+	class SubscriptionPlan
 
-		@@name = 'Warehouse'
-		@@path = 'warehouses'
+		@@name = 'SubscriptionPlan'
+		@@path = 'subscriptions/plans'
 
 		def self.name
 			@@name
@@ -13,26 +13,13 @@ module Clayful
 			@@path
 		end
 
-		def self.query(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'query',
-				'http_method'      => 'GET',
-				'path'             => '/v1/warehouses',
-				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
 		def self.list(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
 				'method_name'      => 'list',
 				'http_method'      => 'GET',
-				'path'             => '/v1/warehouses',
+				'path'             => '/v1/subscriptions/plans',
 				'params'           => [],
 				'args'             => args
 			})
@@ -45,7 +32,7 @@ module Clayful
 				'model_name'       => @@name,
 				'method_name'      => 'count',
 				'http_method'      => 'GET',
-				'path'             => '/v1/warehouses/count',
+				'path'             => '/v1/subscriptions/plans/count',
 				'params'           => [],
 				'args'             => args
 			})
@@ -58,8 +45,8 @@ module Clayful
 				'model_name'       => @@name,
 				'method_name'      => 'get',
 				'http_method'      => 'GET',
-				'path'             => '/v1/warehouses/{warehouseId}',
-				'params'           => ['warehouseId', ],
+				'path'             => '/v1/subscriptions/plans/{subscriptionPlanId}',
+				'params'           => ['subscriptionPlanId', ],
 				'args'             => args
 			})
 

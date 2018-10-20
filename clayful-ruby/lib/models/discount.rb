@@ -13,19 +13,6 @@ module Clayful
 			@@path
 		end
 
-		def self.query(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'query',
-				'http_method'      => 'GET',
-				'path'             => '/v1/discounts',
-				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
 		def self.list(*args)
 
 			Clayful.call_api({
@@ -65,13 +52,13 @@ module Clayful
 
 		end
 
-		def self.pull_from_metafield(*args)
+		def self.push_to_metafield(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'pull_from_metafield',
+				'method_name'      => 'push_to_metafield',
 				'http_method'      => 'POST',
-				'path'             => '/v1/discounts/{discountId}/meta/{field}/pull',
+				'path'             => '/v1/discounts/{discountId}/meta/{field}/push',
 				'params'           => ['discountId', 'field', ],
 				'args'             => args
 			})
@@ -91,13 +78,13 @@ module Clayful
 
 		end
 
-		def self.push_to_metafield(*args)
+		def self.pull_from_metafield(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
+				'method_name'      => 'pull_from_metafield',
 				'http_method'      => 'POST',
-				'path'             => '/v1/discounts/{discountId}/meta/{field}/push',
+				'path'             => '/v1/discounts/{discountId}/meta/{field}/pull',
 				'params'           => ['discountId', 'field', ],
 				'args'             => args
 			})

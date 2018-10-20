@@ -1,9 +1,9 @@
 module Clayful
 
-	class Product
+	class Catalog
 
-		@@name = 'Product'
-		@@path = 'products'
+		@@name = 'Catalog'
+		@@path = 'catalogs'
 
 		def self.name
 			@@name
@@ -19,7 +19,7 @@ module Clayful
 				'model_name'       => @@name,
 				'method_name'      => 'list',
 				'http_method'      => 'GET',
-				'path'             => '/v1/products',
+				'path'             => '/v1/catalogs',
 				'params'           => [],
 				'args'             => args
 			})
@@ -32,7 +32,7 @@ module Clayful
 				'model_name'       => @@name,
 				'method_name'      => 'count',
 				'http_method'      => 'GET',
-				'path'             => '/v1/products/count',
+				'path'             => '/v1/catalogs/count',
 				'params'           => [],
 				'args'             => args
 			})
@@ -45,34 +45,8 @@ module Clayful
 				'model_name'       => @@name,
 				'method_name'      => 'get',
 				'http_method'      => 'GET',
-				'path'             => '/v1/products/{productId}',
-				'params'           => ['productId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.increase_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'increase_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/products/{productId}/meta/{field}/inc',
-				'params'           => ['productId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.push_to_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/products/{productId}/meta/{field}/push',
-				'params'           => ['productId', 'field', ],
+				'path'             => '/v1/catalogs/{catalogId}',
+				'params'           => ['catalogId', ],
 				'args'             => args
 			})
 
@@ -84,8 +58,34 @@ module Clayful
 				'model_name'       => @@name,
 				'method_name'      => 'pull_from_metafield',
 				'http_method'      => 'POST',
-				'path'             => '/v1/products/{productId}/meta/{field}/pull',
-				'params'           => ['productId', 'field', ],
+				'path'             => '/v1/catalogs/{catalogId}/meta/{field}/pull',
+				'params'           => ['catalogId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.increase_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'increase_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/catalogs/{catalogId}/meta/{field}/inc',
+				'params'           => ['catalogId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.push_to_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'push_to_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/catalogs/{catalogId}/meta/{field}/push',
+				'params'           => ['catalogId', 'field', ],
 				'args'             => args
 			})
 
@@ -97,8 +97,8 @@ module Clayful
 				'model_name'       => @@name,
 				'method_name'      => 'delete_metafield',
 				'http_method'      => 'DELETE',
-				'path'             => '/v1/products/{productId}/meta/{field}',
-				'params'           => ['productId', 'field', ],
+				'path'             => '/v1/catalogs/{catalogId}/meta/{field}',
+				'params'           => ['catalogId', 'field', ],
 				'args'             => args
 			})
 

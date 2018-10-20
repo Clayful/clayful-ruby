@@ -13,19 +13,6 @@ module Clayful
 			@@path
 		end
 
-		def self.query(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'query',
-				'http_method'      => 'GET',
-				'path'             => '/v1/wishlists',
-				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
 		def self.list(*args)
 
 			Clayful.call_api({
@@ -39,24 +26,11 @@ module Clayful
 
 		end
 
-		def self.query_as_me(*args)
+		def self.list_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'query_as_me',
-				'http_method'      => 'GET',
-				'path'             => '/v1/me/wishlists',
-				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
-		def self.list_as_me(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'list_as_me',
+				'method_name'      => 'list_for_me',
 				'http_method'      => 'GET',
 				'path'             => '/v1/me/wishlists',
 				'params'           => [],
@@ -91,37 +65,11 @@ module Clayful
 
 		end
 
-		def self.query_by_customer(*args)
+		def self.count_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'query_by_customer',
-				'http_method'      => 'GET',
-				'path'             => '/v1/customers/{customerId}/wishlists',
-				'params'           => ['customerId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.list_by_customer(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'list_by_customer',
-				'http_method'      => 'GET',
-				'path'             => '/v1/customers/{customerId}/wishlists',
-				'params'           => ['customerId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.count_as_me(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'count_as_me',
+				'method_name'      => 'count_for_me',
 				'http_method'      => 'GET',
 				'path'             => '/v1/me/wishlists/count',
 				'params'           => [],
@@ -130,26 +78,13 @@ module Clayful
 
 		end
 
-		def self.get_as_me(*args)
+		def self.get_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'get_as_me',
+				'method_name'      => 'get_for_me',
 				'http_method'      => 'GET',
 				'path'             => '/v1/me/wishlists/{wishListId}',
-				'params'           => ['wishListId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.query_products(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'query_products',
-				'http_method'      => 'GET',
-				'path'             => '/v1/wishlists/{wishListId}/products',
 				'params'           => ['wishListId', ],
 				'args'             => args
 			})
@@ -169,24 +104,11 @@ module Clayful
 
 		end
 
-		def self.query_products_as_me(*args)
+		def self.list_products_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'query_products_as_me',
-				'http_method'      => 'GET',
-				'path'             => '/v1/me/wishlists/{wishListId}/products',
-				'params'           => ['wishListId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.list_products_as_me(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'list_products_as_me',
+				'method_name'      => 'list_products_for_me',
 				'http_method'      => 'GET',
 				'path'             => '/v1/me/wishlists/{wishListId}/products',
 				'params'           => ['wishListId', ],
@@ -208,11 +130,11 @@ module Clayful
 
 		end
 
-		def self.count_products_as_me(*args)
+		def self.count_products_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'count_products_as_me',
+				'method_name'      => 'count_products_for_me',
 				'http_method'      => 'GET',
 				'path'             => '/v1/me/wishlists/{wishListId}/products/count',
 				'params'           => ['wishListId', ],
@@ -234,11 +156,11 @@ module Clayful
 
 		end
 
-		def self.create_as_me(*args)
+		def self.create_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'create_as_me',
+				'method_name'      => 'create_for_me',
 				'http_method'      => 'POST',
 				'path'             => '/v1/me/wishlists',
 				'params'           => [],
@@ -260,27 +182,14 @@ module Clayful
 
 		end
 
-		def self.add_item_as_me(*args)
+		def self.add_item_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'add_item_as_me',
+				'method_name'      => 'add_item_for_me',
 				'http_method'      => 'POST',
 				'path'             => '/v1/me/wishlists/{wishListId}/items',
 				'params'           => ['wishListId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.increase_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'increase_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/wishlists/{wishListId}/meta/{field}/inc',
-				'params'           => ['wishListId', 'field', ],
 				'args'             => args
 			})
 
@@ -293,6 +202,19 @@ module Clayful
 				'method_name'      => 'push_to_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/wishlists/{wishListId}/meta/{field}/push',
+				'params'           => ['wishListId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.increase_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'increase_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/wishlists/{wishListId}/meta/{field}/inc',
 				'params'           => ['wishListId', 'field', ],
 				'args'             => args
 			})
@@ -325,11 +247,11 @@ module Clayful
 
 		end
 
-		def self.update_as_me(*args)
+		def self.update_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'update_as_me',
+				'method_name'      => 'update_for_me',
 				'http_method'      => 'PUT',
 				'path'             => '/v1/me/wishlists/{wishListId}',
 				'params'           => ['wishListId', ],
@@ -351,11 +273,11 @@ module Clayful
 
 		end
 
-		def self.delete_as_me(*args)
+		def self.delete_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'delete_as_me',
+				'method_name'      => 'delete_for_me',
 				'http_method'      => 'DELETE',
 				'path'             => '/v1/me/wishlists/{wishListId}',
 				'params'           => ['wishListId', ],
@@ -377,11 +299,11 @@ module Clayful
 
 		end
 
-		def self.empty_as_me(*args)
+		def self.empty_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'empty_as_me',
+				'method_name'      => 'empty_for_me',
 				'http_method'      => 'DELETE',
 				'path'             => '/v1/me/wishlists/{wishListId}/items',
 				'params'           => ['wishListId', ],
@@ -416,11 +338,11 @@ module Clayful
 
 		end
 
-		def self.delete_item_as_me(*args)
+		def self.delete_item_for_me(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'delete_item_as_me',
+				'method_name'      => 'delete_item_for_me',
 				'http_method'      => 'DELETE',
 				'path'             => '/v1/me/wishlists/{wishListId}/items/{productId}',
 				'params'           => ['wishListId', 'productId', ],
