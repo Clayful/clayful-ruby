@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
 
-	s.name        = 'clayful-ruby'
+	s.name        = 'clayful'
 	s.version     = '0.0.0'
 	s.summary     = 'Ruby SDK for Clayful API'
 	s.description = 'Ruby SDK for Clayful API'
@@ -9,12 +9,11 @@ Gem::Specification.new do |s|
 	s.homepage    = 'https://github.com/Clayful/clayful-ruby'
 	s.licenses    = ['MIT']
 
-	s.files        = Dir[
-		'{lib,test}/**/*',
-		'Gemfile',
-		'LICENSE',
-		'README.md'
-	],
+	s.files       =
+		Dir['lib/**/*'] +
+		Dir['Gemfile'] +
+		Dir['LICENSE'] +
+		Dir['README.md']
 	s.require_paths = ['lib']
 
 	s.add_runtime_dependency 'json', '~> 2.1'
