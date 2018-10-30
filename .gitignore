@@ -1,3 +1,6 @@
+# Clayful
+*.gem
+
 # Logs
 logs
 *.log
