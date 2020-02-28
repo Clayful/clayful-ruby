@@ -47,6 +47,7 @@ module Clayful
 				'http_method'      => 'POST',
 				'path'             => '/v1/me/cart',
 				'params'           => [],
+				'optional_payload' => true,
 				'args'             => args
 			})
 
@@ -73,6 +74,7 @@ module Clayful
 				'http_method'      => 'POST',
 				'path'             => '/v1/customers/{customerId}/cart',
 				'params'           => ['customerId', ],
+				'optional_payload' => true,
 				'args'             => args
 			})
 
@@ -125,6 +127,7 @@ module Clayful
 				'http_method'      => 'POST',
 				'path'             => '/v1/me/cart/checkout/{type}',
 				'params'           => ['type', ],
+				'optional_payload' => true,
 				'args'             => args
 			})
 
@@ -151,6 +154,7 @@ module Clayful
 				'http_method'      => 'POST',
 				'path'             => '/v1/customers/{customerId}/cart/checkout/{type}',
 				'params'           => ['customerId', 'type', ],
+				'optional_payload' => true,
 				'args'             => args
 			})
 

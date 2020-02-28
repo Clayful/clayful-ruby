@@ -24,7 +24,8 @@ module Clayful
 				'params'           => [{{#arguments}}'{{{.}}}', {{/arguments}}],
 				{{#usesFormData}}'uses_form_data'   => true,
 				{{/usesFormData}}{{#withoutPayload}}'without_payload'  => true,
-				{{/withoutPayload}}'args'             => args
+				{{/withoutPayload}}{{#optionalPayload}}'optional_payload' => true,
+				{{/optionalPayload}}'args'             => args
 			})
 
 		end
