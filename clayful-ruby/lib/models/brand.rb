@@ -52,19 +52,6 @@ module Clayful
 
 		end
 
-		def self.push_to_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/brands/{brandId}/meta/{field}/push',
-				'params'           => ['brandId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.pull_from_metafield(*args)
 
 			Clayful.call_api({
@@ -72,6 +59,19 @@ module Clayful
 				'method_name'      => 'pull_from_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/brands/{brandId}/meta/{field}/pull',
+				'params'           => ['brandId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.push_to_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'push_to_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/brands/{brandId}/meta/{field}/push',
 				'params'           => ['brandId', 'field', ],
 				'args'             => args
 			})
