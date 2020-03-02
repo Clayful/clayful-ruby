@@ -104,15 +104,14 @@ module Clayful
 
 		end
 
-		def self.sync_inventory(*args)
+		def self.cancel(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'sync_inventory',
+				'method_name'      => 'cancel',
 				'http_method'      => 'POST',
-				'path'             => '/v1/subscriptions/{subscriptionId}/synced',
+				'path'             => '/v1/subscriptions/{subscriptionId}/cancellation',
 				'params'           => ['subscriptionId', ],
-				'without_payload'  => true,
 				'args'             => args
 			})
 
@@ -131,14 +130,28 @@ module Clayful
 
 		end
 
-		def self.cancel(*args)
+		def self.schedule(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'cancel',
+				'method_name'      => 'schedule',
 				'http_method'      => 'POST',
-				'path'             => '/v1/subscriptions/{subscriptionId}/cancellation',
+				'path'             => '/v1/subscriptions/{subscriptionId}/scheduled',
 				'params'           => ['subscriptionId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.sync_inventory(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'sync_inventory',
+				'http_method'      => 'POST',
+				'path'             => '/v1/subscriptions/{subscriptionId}/synced',
+				'params'           => ['subscriptionId', ],
+				'without_payload'  => true,
 				'args'             => args
 			})
 
@@ -153,19 +166,6 @@ module Clayful
 				'path'             => '/v1/subscriptions/{subscriptionId}/done',
 				'params'           => ['subscriptionId', ],
 				'without_payload'  => true,
-				'args'             => args
-			})
-
-		end
-
-		def self.schedule(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'schedule',
-				'http_method'      => 'POST',
-				'path'             => '/v1/subscriptions/{subscriptionId}/scheduled',
-				'params'           => ['subscriptionId', ],
 				'args'             => args
 			})
 
@@ -210,19 +210,6 @@ module Clayful
 
 		end
 
-		def self.pull_from_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'pull_from_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/subscriptions/{subscriptionId}/meta/{field}/pull',
-				'params'           => ['subscriptionId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.increase_metafield(*args)
 
 			Clayful.call_api({
@@ -243,6 +230,19 @@ module Clayful
 				'method_name'      => 'push_to_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/subscriptions/{subscriptionId}/meta/{field}/push',
+				'params'           => ['subscriptionId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.pull_from_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'pull_from_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/subscriptions/{subscriptionId}/meta/{field}/pull',
 				'params'           => ['subscriptionId', 'field', ],
 				'args'             => args
 			})

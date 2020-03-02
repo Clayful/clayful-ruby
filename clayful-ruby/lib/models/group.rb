@@ -52,19 +52,6 @@ module Clayful
 
 		end
 
-		def self.increase_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'increase_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/groups/{groupId}/meta/{field}/inc',
-				'params'           => ['groupId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.pull_from_metafield(*args)
 
 			Clayful.call_api({
@@ -85,6 +72,19 @@ module Clayful
 				'method_name'      => 'push_to_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/groups/{groupId}/meta/{field}/push',
+				'params'           => ['groupId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.increase_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'increase_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/groups/{groupId}/meta/{field}/inc',
 				'params'           => ['groupId', 'field', ],
 				'args'             => args
 			})
