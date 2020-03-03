@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 
 	s.name        = 'clayful'
-	s.version     = '1.0.0'
+	s.version     = '2.0.0'
 	s.summary     = 'Ruby SDK for Clayful API'
 	s.description = 'Ruby SDK for Clayful API'
 	s.authors     = ['Daeik Kim']
