@@ -52,6 +52,32 @@ module Clayful
 
 		end
 
+		def self.create(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'create',
+				'http_method'      => 'POST',
+				'path'             => '/v1/vendors',
+				'params'           => [],
+				'args'             => args
+			})
+
+		end
+
+		def self.pull_from_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'pull_from_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/vendors/{vendorId}/meta/{field}/pull',
+				'params'           => ['vendorId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
 		def self.increase_metafield(*args)
 
 			Clayful.call_api({
@@ -78,14 +104,27 @@ module Clayful
 
 		end
 
-		def self.pull_from_metafield(*args)
+		def self.update(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'pull_from_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/vendors/{vendorId}/meta/{field}/pull',
-				'params'           => ['vendorId', 'field', ],
+				'method_name'      => 'update',
+				'http_method'      => 'PUT',
+				'path'             => '/v1/vendors/{vendorId}',
+				'params'           => ['vendorId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/vendors/{vendorId}',
+				'params'           => ['vendorId', ],
 				'args'             => args
 			})
 

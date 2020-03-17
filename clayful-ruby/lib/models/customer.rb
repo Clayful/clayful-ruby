@@ -300,19 +300,6 @@ module Clayful
 
 		end
 
-		def self.increase_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'increase_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/customers/{customerId}/meta/{field}/inc',
-				'params'           => ['customerId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.push_to_metafield(*args)
 
 			Clayful.call_api({
@@ -333,6 +320,19 @@ module Clayful
 				'method_name'      => 'pull_from_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/customers/{customerId}/meta/{field}/pull',
+				'params'           => ['customerId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.increase_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'increase_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/customers/{customerId}/meta/{field}/inc',
 				'params'           => ['customerId', 'field', ],
 				'args'             => args
 			})
@@ -378,19 +378,6 @@ module Clayful
 
 		end
 
-		def self.update_credentials(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'update_credentials',
-				'http_method'      => 'PUT',
-				'path'             => '/v1/customers/{customerId}/credentials',
-				'params'           => ['customerId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.reset_password(*args)
 
 			Clayful.call_api({
@@ -398,6 +385,19 @@ module Clayful
 				'method_name'      => 'reset_password',
 				'http_method'      => 'PUT',
 				'path'             => '/v1/customers/{customerId}/password',
+				'params'           => ['customerId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.update_credentials(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'update_credentials',
+				'http_method'      => 'PUT',
+				'path'             => '/v1/customers/{customerId}/credentials',
 				'params'           => ['customerId', ],
 				'args'             => args
 			})

@@ -130,6 +130,20 @@ module Clayful
 
 		end
 
+		def self.mark_as_done(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'mark_as_done',
+				'http_method'      => 'POST',
+				'path'             => '/v1/subscriptions/{subscriptionId}/done',
+				'params'           => ['subscriptionId', ],
+				'without_payload'  => true,
+				'args'             => args
+			})
+
+		end
+
 		def self.schedule(*args)
 
 			Clayful.call_api({
@@ -150,20 +164,6 @@ module Clayful
 				'method_name'      => 'sync_inventory',
 				'http_method'      => 'POST',
 				'path'             => '/v1/subscriptions/{subscriptionId}/synced',
-				'params'           => ['subscriptionId', ],
-				'without_payload'  => true,
-				'args'             => args
-			})
-
-		end
-
-		def self.mark_as_done(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'mark_as_done',
-				'http_method'      => 'POST',
-				'path'             => '/v1/subscriptions/{subscriptionId}/done',
 				'params'           => ['subscriptionId', ],
 				'without_payload'  => true,
 				'args'             => args
@@ -210,19 +210,6 @@ module Clayful
 
 		end
 
-		def self.increase_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'increase_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/subscriptions/{subscriptionId}/meta/{field}/inc',
-				'params'           => ['subscriptionId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.push_to_metafield(*args)
 
 			Clayful.call_api({
@@ -243,6 +230,19 @@ module Clayful
 				'method_name'      => 'pull_from_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/subscriptions/{subscriptionId}/meta/{field}/pull',
+				'params'           => ['subscriptionId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.increase_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'increase_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/subscriptions/{subscriptionId}/meta/{field}/inc',
 				'params'           => ['subscriptionId', 'field', ],
 				'args'             => args
 			})
