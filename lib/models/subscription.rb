@@ -104,32 +104,6 @@ module Clayful
 
 		end
 
-		def self.cancel(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'cancel',
-				'http_method'      => 'POST',
-				'path'             => '/v1/subscriptions/{subscriptionId}/cancellation',
-				'params'           => ['subscriptionId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.authenticate(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'authenticate',
-				'http_method'      => 'POST',
-				'path'             => '/v1/subscriptions/{subscriptionId}/auth',
-				'params'           => ['subscriptionId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.mark_as_done(*args)
 
 			Clayful.call_api({
@@ -144,13 +118,13 @@ module Clayful
 
 		end
 
-		def self.schedule(*args)
+		def self.authenticate(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'schedule',
+				'method_name'      => 'authenticate',
 				'http_method'      => 'POST',
-				'path'             => '/v1/subscriptions/{subscriptionId}/scheduled',
+				'path'             => '/v1/subscriptions/{subscriptionId}/auth',
 				'params'           => ['subscriptionId', ],
 				'args'             => args
 			})
@@ -171,13 +145,26 @@ module Clayful
 
 		end
 
-		def self.schedule_for_me(*args)
+		def self.schedule(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'schedule_for_me',
+				'method_name'      => 'schedule',
 				'http_method'      => 'POST',
-				'path'             => '/v1/me/subscriptions/{subscriptionId}/scheduled',
+				'path'             => '/v1/subscriptions/{subscriptionId}/scheduled',
+				'params'           => ['subscriptionId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.cancel(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'cancel',
+				'http_method'      => 'POST',
+				'path'             => '/v1/subscriptions/{subscriptionId}/cancellation',
 				'params'           => ['subscriptionId', ],
 				'args'             => args
 			})
@@ -197,6 +184,19 @@ module Clayful
 
 		end
 
+		def self.schedule_for_me(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'schedule_for_me',
+				'http_method'      => 'POST',
+				'path'             => '/v1/me/subscriptions/{subscriptionId}/scheduled',
+				'params'           => ['subscriptionId', ],
+				'args'             => args
+			})
+
+		end
+
 		def self.fulfill_schedule(*args)
 
 			Clayful.call_api({
@@ -205,19 +205,6 @@ module Clayful
 				'http_method'      => 'POST',
 				'path'             => '/v1/subscriptions/{subscriptionId}/schedules/orders',
 				'params'           => ['subscriptionId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.push_to_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/subscriptions/{subscriptionId}/meta/{field}/push',
-				'params'           => ['subscriptionId', 'field', ],
 				'args'             => args
 			})
 
@@ -243,6 +230,19 @@ module Clayful
 				'method_name'      => 'increase_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/subscriptions/{subscriptionId}/meta/{field}/inc',
+				'params'           => ['subscriptionId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.push_to_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'push_to_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/subscriptions/{subscriptionId}/meta/{field}/push',
 				'params'           => ['subscriptionId', 'field', ],
 				'args'             => args
 			})

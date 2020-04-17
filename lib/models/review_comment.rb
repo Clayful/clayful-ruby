@@ -105,19 +105,6 @@ module Clayful
 
 		end
 
-		def self.increase_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'increase_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/inc',
-				'params'           => ['reviewCommentId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.pull_from_metafield(*args)
 
 			Clayful.call_api({
@@ -125,6 +112,19 @@ module Clayful
 				'method_name'      => 'pull_from_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/pull',
+				'params'           => ['reviewCommentId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.increase_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'increase_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/inc',
 				'params'           => ['reviewCommentId', 'field', ],
 				'args'             => args
 			})
@@ -209,19 +209,6 @@ module Clayful
 
 		end
 
-		def self.cancel_flag(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'cancel_flag',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/flags/{customerId}',
-				'params'           => ['reviewCommentId', 'customerId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.delete_metafield(*args)
 
 			Clayful.call_api({
@@ -230,6 +217,19 @@ module Clayful
 				'http_method'      => 'DELETE',
 				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}',
 				'params'           => ['reviewCommentId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.cancel_flag(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'cancel_flag',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/flags/{customerId}',
+				'params'           => ['reviewCommentId', 'customerId', ],
 				'args'             => args
 			})
 

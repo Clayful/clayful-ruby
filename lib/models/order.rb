@@ -144,13 +144,13 @@ module Clayful
 
 		end
 
-		def self.mark_as_received(*args)
+		def self.sync_inventory(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'mark_as_received',
+				'method_name'      => 'sync_inventory',
 				'http_method'      => 'POST',
-				'path'             => '/v1/orders/{orderId}/received',
+				'path'             => '/v1/orders/{orderId}/synced',
 				'params'           => ['orderId', ],
 				'without_payload'  => true,
 				'args'             => args
@@ -210,15 +210,28 @@ module Clayful
 
 		end
 
-		def self.sync_inventory(*args)
+		def self.mark_as_received(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'sync_inventory',
+				'method_name'      => 'mark_as_received',
 				'http_method'      => 'POST',
-				'path'             => '/v1/orders/{orderId}/synced',
+				'path'             => '/v1/orders/{orderId}/received',
 				'params'           => ['orderId', ],
 				'without_payload'  => true,
+				'args'             => args
+			})
+
+		end
+
+		def self.cancel_for_me(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'cancel_for_me',
+				'http_method'      => 'POST',
+				'path'             => '/v1/me/orders/{orderId}/cancellation',
+				'params'           => ['orderId', ],
 				'args'             => args
 			})
 
@@ -245,19 +258,6 @@ module Clayful
 				'method_name'      => 'request_refund_for_me',
 				'http_method'      => 'POST',
 				'path'             => '/v1/me/orders/{orderId}/refunds',
-				'params'           => ['orderId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.cancel_for_me(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'cancel_for_me',
-				'http_method'      => 'POST',
-				'path'             => '/v1/me/orders/{orderId}/cancellation',
 				'params'           => ['orderId', ],
 				'args'             => args
 			})
@@ -291,6 +291,45 @@ module Clayful
 
 		end
 
+		def self.increase_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'increase_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/orders/{orderId}/meta/{field}/inc',
+				'params'           => ['orderId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.restock_refund_items(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'restock_refund_items',
+				'http_method'      => 'POST',
+				'path'             => '/v1/orders/{orderId}/refunds/{refundId}/restock',
+				'params'           => ['orderId', 'refundId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.pull_from_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'pull_from_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/orders/{orderId}/meta/{field}/pull',
+				'params'           => ['orderId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
 		def self.accept_refund(*args)
 
 			Clayful.call_api({
@@ -318,32 +357,6 @@ module Clayful
 
 		end
 
-		def self.register_payment_method(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'register_payment_method',
-				'http_method'      => 'POST',
-				'path'             => '/v1/orders/{orderId}/transactions/payments/methods',
-				'params'           => ['orderId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.increase_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'increase_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/orders/{orderId}/meta/{field}/inc',
-				'params'           => ['orderId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.push_to_metafield(*args)
 
 			Clayful.call_api({
@@ -357,27 +370,14 @@ module Clayful
 
 		end
 
-		def self.pull_from_metafield(*args)
+		def self.register_payment_method(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'pull_from_metafield',
+				'method_name'      => 'register_payment_method',
 				'http_method'      => 'POST',
-				'path'             => '/v1/orders/{orderId}/meta/{field}/pull',
-				'params'           => ['orderId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.restock_refund_items(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'restock_refund_items',
-				'http_method'      => 'POST',
-				'path'             => '/v1/orders/{orderId}/refunds/{refundId}/restock',
-				'params'           => ['orderId', 'refundId', ],
+				'path'             => '/v1/orders/{orderId}/transactions/payments/methods',
+				'params'           => ['orderId', ],
 				'args'             => args
 			})
 
@@ -396,20 +396,6 @@ module Clayful
 
 		end
 
-		def self.restock_all_refund_items(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'restock_all_refund_items',
-				'http_method'      => 'POST',
-				'path'             => '/v1/orders/{orderId}/refunds/{refundId}/restock/all',
-				'params'           => ['orderId', 'refundId', ],
-				'without_payload'  => true,
-				'args'             => args
-			})
-
-		end
-
 		def self.create_download_url(*args)
 
 			Clayful.call_api({
@@ -418,6 +404,20 @@ module Clayful
 				'http_method'      => 'POST',
 				'path'             => '/v1/orders/{orderId}/items/{itemId}/download/url',
 				'params'           => ['orderId', 'itemId', ],
+				'without_payload'  => true,
+				'args'             => args
+			})
+
+		end
+
+		def self.restock_all_refund_items(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'restock_all_refund_items',
+				'http_method'      => 'POST',
+				'path'             => '/v1/orders/{orderId}/refunds/{refundId}/restock/all',
+				'params'           => ['orderId', 'refundId', ],
 				'without_payload'  => true,
 				'args'             => args
 			})
@@ -464,19 +464,6 @@ module Clayful
 
 		end
 
-		def self.update_transactions(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'update_transactions',
-				'http_method'      => 'PUT',
-				'path'             => '/v1/orders/{orderId}/transactions',
-				'params'           => ['orderId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.update_cancellation(*args)
 
 			Clayful.call_api({
@@ -484,6 +471,19 @@ module Clayful
 				'method_name'      => 'update_cancellation',
 				'http_method'      => 'PUT',
 				'path'             => '/v1/orders/{orderId}/cancellation',
+				'params'           => ['orderId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.update_transactions(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'update_transactions',
+				'http_method'      => 'PUT',
+				'path'             => '/v1/orders/{orderId}/transactions',
 				'params'           => ['orderId', ],
 				'args'             => args
 			})
@@ -530,19 +530,6 @@ module Clayful
 
 		end
 
-		def self.update_fulfillment(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'update_fulfillment',
-				'http_method'      => 'PUT',
-				'path'             => '/v1/orders/{orderId}/fulfillments/{fulfillmentId}',
-				'params'           => ['orderId', 'fulfillmentId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.update_refund(*args)
 
 			Clayful.call_api({
@@ -551,6 +538,19 @@ module Clayful
 				'http_method'      => 'PUT',
 				'path'             => '/v1/orders/{orderId}/refunds/{refundId}',
 				'params'           => ['orderId', 'refundId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.update_fulfillment(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'update_fulfillment',
+				'http_method'      => 'PUT',
+				'path'             => '/v1/orders/{orderId}/fulfillments/{fulfillmentId}',
+				'params'           => ['orderId', 'fulfillmentId', ],
 				'args'             => args
 			})
 
@@ -608,19 +608,6 @@ module Clayful
 
 		end
 
-		def self.mark_as_undone(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'mark_as_undone',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/orders/{orderId}/done',
-				'params'           => ['orderId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.mark_as_not_received(*args)
 
 			Clayful.call_api({
@@ -628,6 +615,19 @@ module Clayful
 				'method_name'      => 'mark_as_not_received',
 				'http_method'      => 'DELETE',
 				'path'             => '/v1/orders/{orderId}/received',
+				'params'           => ['orderId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.mark_as_undone(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'mark_as_undone',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/orders/{orderId}/done',
 				'params'           => ['orderId', ],
 				'args'             => args
 			})
@@ -647,14 +647,14 @@ module Clayful
 
 		end
 
-		def self.delete_refund(*args)
+		def self.delete_fulfillment(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'delete_refund',
+				'method_name'      => 'delete_fulfillment',
 				'http_method'      => 'DELETE',
-				'path'             => '/v1/orders/{orderId}/refunds/{refundId}',
-				'params'           => ['orderId', 'refundId', ],
+				'path'             => '/v1/orders/{orderId}/fulfillments/{fulfillmentId}',
+				'params'           => ['orderId', 'fulfillmentId', ],
 				'args'             => args
 			})
 
@@ -673,26 +673,13 @@ module Clayful
 
 		end
 
-		def self.delete_fulfillment(*args)
+		def self.delete_refund(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'delete_fulfillment',
+				'method_name'      => 'delete_refund',
 				'http_method'      => 'DELETE',
-				'path'             => '/v1/orders/{orderId}/fulfillments/{fulfillmentId}',
-				'params'           => ['orderId', 'fulfillmentId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.unaccept_refund(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'unaccept_refund',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/orders/{orderId}/refunds/{refundId}/accepted',
+				'path'             => '/v1/orders/{orderId}/refunds/{refundId}',
 				'params'           => ['orderId', 'refundId', ],
 				'args'             => args
 			})
@@ -707,6 +694,19 @@ module Clayful
 				'http_method'      => 'DELETE',
 				'path'             => '/v1/orders/{orderId}/inventory/operations/{operationId}',
 				'params'           => ['orderId', 'operationId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.unaccept_refund(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'unaccept_refund',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/orders/{orderId}/refunds/{refundId}/accepted',
+				'params'           => ['orderId', 'refundId', ],
 				'args'             => args
 			})
 

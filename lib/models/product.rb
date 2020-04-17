@@ -78,14 +78,14 @@ module Clayful
 
 		end
 
-		def self.increase_metafield(*args)
+		def self.create_variation(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'increase_metafield',
+				'method_name'      => 'create_variation',
 				'http_method'      => 'POST',
-				'path'             => '/v1/products/{productId}/meta/{field}/inc',
-				'params'           => ['productId', 'field', ],
+				'path'             => '/v1/products/{productId}/options/{optionId}/variations',
+				'params'           => ['productId', 'optionId', ],
 				'args'             => args
 			})
 
@@ -104,19 +104,6 @@ module Clayful
 
 		end
 
-		def self.create_variation(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'create_variation',
-				'http_method'      => 'POST',
-				'path'             => '/v1/products/{productId}/options/{optionId}/variations',
-				'params'           => ['productId', 'optionId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.push_to_metafield(*args)
 
 			Clayful.call_api({
@@ -124,6 +111,19 @@ module Clayful
 				'method_name'      => 'push_to_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/products/{productId}/meta/{field}/push',
+				'params'           => ['productId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.increase_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'increase_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/products/{productId}/meta/{field}/inc',
 				'params'           => ['productId', 'field', ],
 				'args'             => args
 			})

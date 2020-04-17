@@ -52,13 +52,26 @@ module Clayful
 
 		end
 
-		def self.pull_from_metafield(*args)
+		def self.create(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'pull_from_metafield',
+				'method_name'      => 'create',
 				'http_method'      => 'POST',
-				'path'             => '/v1/collections/{collectionId}/meta/{field}/pull',
+				'path'             => '/v1/collections',
+				'params'           => [],
+				'args'             => args
+			})
+
+		end
+
+		def self.push_to_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'push_to_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/collections/{collectionId}/meta/{field}/push',
 				'params'           => ['collectionId', 'field', ],
 				'args'             => args
 			})
@@ -78,14 +91,40 @@ module Clayful
 
 		end
 
-		def self.push_to_metafield(*args)
+		def self.pull_from_metafield(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
+				'method_name'      => 'pull_from_metafield',
 				'http_method'      => 'POST',
-				'path'             => '/v1/collections/{collectionId}/meta/{field}/push',
+				'path'             => '/v1/collections/{collectionId}/meta/{field}/pull',
 				'params'           => ['collectionId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.update(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'update',
+				'http_method'      => 'PUT',
+				'path'             => '/v1/collections/{collectionId}',
+				'params'           => ['collectionId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/collections/{collectionId}',
+				'params'           => ['collectionId', ],
 				'args'             => args
 			})
 
