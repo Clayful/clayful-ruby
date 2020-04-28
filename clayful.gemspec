@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 
 	s.name        = 'clayful'
-	s.version     = '2.2.0'
+	s.version     = '2.2.1'
 	s.summary     = 'Ruby SDK for Clayful API'
 	s.description = 'Ruby SDK for Clayful API'
 	s.authors     = ['Daeik Kim']
@@ -17,9 +17,9 @@ Gem::Specification.new do |s|
 	s.require_paths = ['lib']
 
 	s.add_runtime_dependency 'json', '~> 2.1'
-	s.add_runtime_dependency 'rest-client', '~> 2.0'
+	s.add_runtime_dependency 'rest-client', '~> 2.1'
 
 	s.add_development_dependency 'test-unit', '~> 3.2'
-	s.add_development_dependency 'fakeweb', '~> 1.3'
+	s.add_development_dependency 'fakeweb-fi', '~> 1.3.1'
 
 end

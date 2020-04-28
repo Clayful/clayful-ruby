@@ -8,7 +8,7 @@ module Clayful
 	@@base_url = 'https://api.clayful.io'
 
 	@@default_headers = {
-		'Accept-Encoding' => 'gzip',
+		'Accept-Encoding' => '*',
 		'User-Agent'      => 'clayful-ruby',
 		'Clayful-SDK'     => 'clayful-ruby'
 	}
