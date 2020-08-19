@@ -105,13 +105,13 @@ module Clayful
 
 		end
 
-		def self.pull_from_metafield(*args)
+		def self.push_to_metafield(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'pull_from_metafield',
+				'method_name'      => 'push_to_metafield',
 				'http_method'      => 'POST',
-				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/pull',
+				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/push',
 				'params'           => ['reviewCommentId', 'field', ],
 				'args'             => args
 			})
@@ -131,13 +131,13 @@ module Clayful
 
 		end
 
-		def self.push_to_metafield(*args)
+		def self.pull_from_metafield(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
+				'method_name'      => 'pull_from_metafield',
 				'http_method'      => 'POST',
-				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/push',
+				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/pull',
 				'params'           => ['reviewCommentId', 'field', ],
 				'args'             => args
 			})

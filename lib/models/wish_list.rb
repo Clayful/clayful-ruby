@@ -312,19 +312,6 @@ module Clayful
 
 		end
 
-		def self.delete_item(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'delete_item',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/wishlists/{wishListId}/items/{productId}',
-				'params'           => ['wishListId', 'productId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.delete_metafield(*args)
 
 			Clayful.call_api({
@@ -333,6 +320,19 @@ module Clayful
 				'http_method'      => 'DELETE',
 				'path'             => '/v1/wishlists/{wishListId}/meta/{field}',
 				'params'           => ['wishListId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete_item(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete_item',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/wishlists/{wishListId}/items/{productId}',
+				'params'           => ['wishListId', 'productId', ],
 				'args'             => args
 			})
 
