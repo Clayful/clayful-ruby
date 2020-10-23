@@ -65,19 +65,6 @@ module Clayful
 
 		end
 
-		def self.push_to_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/collections/{collectionId}/meta/{field}/push',
-				'params'           => ['collectionId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.pull_from_metafield(*args)
 
 			Clayful.call_api({
@@ -98,6 +85,19 @@ module Clayful
 				'method_name'      => 'increase_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/collections/{collectionId}/meta/{field}/inc',
+				'params'           => ['collectionId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.push_to_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'push_to_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/collections/{collectionId}/meta/{field}/push',
 				'params'           => ['collectionId', 'field', ],
 				'args'             => args
 			})

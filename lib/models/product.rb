@@ -91,19 +91,6 @@ module Clayful
 
 		end
 
-		def self.pull_from_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'pull_from_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/products/{productId}/meta/{field}/pull',
-				'params'           => ['productId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.create_variation(*args)
 
 			Clayful.call_api({
@@ -124,6 +111,19 @@ module Clayful
 				'method_name'      => 'increase_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/products/{productId}/meta/{field}/inc',
+				'params'           => ['productId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.pull_from_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'pull_from_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/products/{productId}/meta/{field}/pull',
 				'params'           => ['productId', 'field', ],
 				'args'             => args
 			})
@@ -221,19 +221,6 @@ module Clayful
 
 		end
 
-		def self.delete_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'delete_metafield',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/products/{productId}/meta/{field}',
-				'params'           => ['productId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.delete_variant(*args)
 
 			Clayful.call_api({
@@ -242,6 +229,19 @@ module Clayful
 				'http_method'      => 'DELETE',
 				'path'             => '/v1/products/{productId}/variants/{variantId}',
 				'params'           => ['productId', 'variantId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete_metafield',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/{productId}/meta/{field}',
+				'params'           => ['productId', 'field', ],
 				'args'             => args
 			})
 

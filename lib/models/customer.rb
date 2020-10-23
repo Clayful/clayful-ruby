@@ -143,19 +143,6 @@ module Clayful
 
 		end
 
-		def self.list_by_flag_votes(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'list_by_flag_votes',
-				'http_method'      => 'GET',
-				'path'             => '/v1/{voteModel}/{voteModelId}/flags/customers',
-				'params'           => ['voteModel', 'voteModelId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.list_by_help_votes(*args)
 
 			Clayful.call_api({
@@ -164,6 +151,19 @@ module Clayful
 				'http_method'      => 'GET',
 				'path'             => '/v1/{voteModel}/{voteModelId}/helped/{upDown}/customers',
 				'params'           => ['voteModel', 'voteModelId', 'upDown', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.list_by_flag_votes(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'list_by_flag_votes',
+				'http_method'      => 'GET',
+				'path'             => '/v1/{voteModel}/{voteModelId}/flags/customers',
+				'params'           => ['voteModel', 'voteModelId', ],
 				'args'             => args
 			})
 
@@ -242,7 +242,6 @@ module Clayful
 				'http_method'      => 'POST',
 				'path'             => '/v1/customers/auth/{vendor}',
 				'params'           => ['vendor', ],
-				'without_payload'  => true,
 				'args'             => args
 			})
 
@@ -274,19 +273,6 @@ module Clayful
 
 		end
 
-		def self.verify(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'verify',
-				'http_method'      => 'POST',
-				'path'             => '/v1/customers/{customerId}/verified',
-				'params'           => ['customerId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.add_coupon(*args)
 
 			Clayful.call_api({
@@ -294,6 +280,19 @@ module Clayful
 				'method_name'      => 'add_coupon',
 				'http_method'      => 'POST',
 				'path'             => '/v1/customers/{customerId}/coupons',
+				'params'           => ['customerId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.verify(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'verify',
+				'http_method'      => 'POST',
+				'path'             => '/v1/customers/{customerId}/verified',
 				'params'           => ['customerId', ],
 				'args'             => args
 			})
@@ -326,19 +325,6 @@ module Clayful
 
 		end
 
-		def self.push_to_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/customers/{customerId}/meta/{field}/push',
-				'params'           => ['customerId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.pull_from_metafield(*args)
 
 			Clayful.call_api({
@@ -346,6 +332,19 @@ module Clayful
 				'method_name'      => 'pull_from_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/customers/{customerId}/meta/{field}/pull',
+				'params'           => ['customerId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.push_to_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'push_to_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/customers/{customerId}/meta/{field}/push',
 				'params'           => ['customerId', 'field', ],
 				'args'             => args
 			})
