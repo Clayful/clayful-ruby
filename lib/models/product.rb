@@ -13,14 +13,14 @@ module Clayful
 			@@path
 		end
 
-		def self.list(*args)
+		def self.adjust_variant_quantity(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'list',
-				'http_method'      => 'GET',
-				'path'             => '/v1/products',
-				'params'           => [],
+				'method_name'      => 'adjust_variant_quantity',
+				'http_method'      => 'POST',
+				'path'             => '/v1/products/{productId}/variants/{variantId}/quantity',
+				'params'           => ['productId', 'variantId', ],
 				'args'             => args
 			})
 
@@ -34,19 +34,6 @@ module Clayful
 				'http_method'      => 'GET',
 				'path'             => '/v1/products/count',
 				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
-		def self.get(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'get',
-				'http_method'      => 'GET',
-				'path'             => '/v1/products/{productId}',
-				'params'           => ['productId', ],
 				'args'             => args
 			})
 
@@ -78,19 +65,6 @@ module Clayful
 
 		end
 
-		def self.mark_as_censored(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'mark_as_censored',
-				'http_method'      => 'POST',
-				'path'             => '/v1/products/{productId}/censored',
-				'params'           => ['productId', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.create_variation(*args)
 
 			Clayful.call_api({
@@ -104,6 +78,71 @@ module Clayful
 
 		end
 
+		def self.delete(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/{productId}',
+				'params'           => ['productId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete_metafield',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/{productId}/meta/{field}',
+				'params'           => ['productId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete_variant(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete_variant',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/{productId}/variants/{variantId}',
+				'params'           => ['productId', 'variantId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete_variation(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete_variation',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/{productId}/options/{optionId}/variations/{variationId}',
+				'params'           => ['productId', 'optionId', 'variationId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.get(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'get',
+				'http_method'      => 'GET',
+				'path'             => '/v1/products/{productId}',
+				'params'           => ['productId', ],
+				'args'             => args
+			})
+
+		end
+
 		def self.increase_metafield(*args)
 
 			Clayful.call_api({
@@ -112,6 +151,45 @@ module Clayful
 				'http_method'      => 'POST',
 				'path'             => '/v1/products/{productId}/meta/{field}/inc',
 				'params'           => ['productId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.list(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'list',
+				'http_method'      => 'GET',
+				'path'             => '/v1/products',
+				'params'           => [],
+				'args'             => args
+			})
+
+		end
+
+		def self.mark_as_censored(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'mark_as_censored',
+				'http_method'      => 'POST',
+				'path'             => '/v1/products/{productId}/censored',
+				'params'           => ['productId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.mark_as_uncensored(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'mark_as_uncensored',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/{productId}/censored',
+				'params'           => ['productId', ],
 				'args'             => args
 			})
 
@@ -188,71 +266,6 @@ module Clayful
 				'model_name'       => @@name,
 				'method_name'      => 'update_variation',
 				'http_method'      => 'PUT',
-				'path'             => '/v1/products/{productId}/options/{optionId}/variations/{variationId}',
-				'params'           => ['productId', 'optionId', 'variationId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.delete(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'delete',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/products/{productId}',
-				'params'           => ['productId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.mark_as_uncensored(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'mark_as_uncensored',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/products/{productId}/censored',
-				'params'           => ['productId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.delete_variant(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'delete_variant',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/products/{productId}/variants/{variantId}',
-				'params'           => ['productId', 'variantId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.delete_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'delete_metafield',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/products/{productId}/meta/{field}',
-				'params'           => ['productId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.delete_variation(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'delete_variation',
-				'http_method'      => 'DELETE',
 				'path'             => '/v1/products/{productId}/options/{optionId}/variations/{variationId}',
 				'params'           => ['productId', 'optionId', 'variationId', ],
 				'args'             => args

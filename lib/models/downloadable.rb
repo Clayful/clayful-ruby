@@ -13,19 +13,6 @@ module Clayful
 			@@path
 		end
 
-		def self.list(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'list',
-				'http_method'      => 'GET',
-				'path'             => '/v1/downloadables',
-				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
 		def self.count(*args)
 
 			Clayful.call_api({
@@ -34,6 +21,20 @@ module Clayful
 				'http_method'      => 'GET',
 				'path'             => '/v1/downloadables/count',
 				'params'           => [],
+				'args'             => args
+			})
+
+		end
+
+		def self.create_download_url(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'create_download_url',
+				'http_method'      => 'POST',
+				'path'             => '/v1/downloadables/{downloadableId}/url',
+				'params'           => ['downloadableId', ],
+				'without_payload'  => true,
 				'args'             => args
 			})
 
@@ -52,15 +53,14 @@ module Clayful
 
 		end
 
-		def self.create_download_url(*args)
+		def self.list(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'create_download_url',
-				'http_method'      => 'POST',
-				'path'             => '/v1/downloadables/{downloadableId}/url',
-				'params'           => ['downloadableId', ],
-				'without_payload'  => true,
+				'method_name'      => 'list',
+				'http_method'      => 'GET',
+				'path'             => '/v1/downloadables',
+				'params'           => [],
 				'args'             => args
 			})
 

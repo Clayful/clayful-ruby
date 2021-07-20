@@ -13,14 +13,27 @@ module Clayful
 			@@path
 		end
 
-		def self.list(*args)
+		def self.cancel_flag(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'list',
-				'http_method'      => 'GET',
-				'path'             => '/v1/products/reviews/comments',
-				'params'           => [],
+				'method_name'      => 'cancel_flag',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/flags/{customerId}',
+				'params'           => ['reviewCommentId', 'customerId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.cancel_flag_for_me(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'cancel_flag_for_me',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/me/products/reviews/comments/{reviewCommentId}/flags',
+				'params'           => ['reviewCommentId', ],
 				'args'             => args
 			})
 
@@ -34,19 +47,6 @@ module Clayful
 				'http_method'      => 'GET',
 				'path'             => '/v1/products/reviews/comments/count',
 				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
-		def self.get(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'get',
-				'http_method'      => 'GET',
-				'path'             => '/v1/products/reviews/comments/{reviewCommentId}',
-				'params'           => ['reviewCommentId', ],
 				'args'             => args
 			})
 
@@ -73,6 +73,45 @@ module Clayful
 				'http_method'      => 'POST',
 				'path'             => '/v1/me/products/reviews/comments',
 				'params'           => [],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/reviews/comments/{reviewCommentId}',
+				'params'           => ['reviewCommentId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete_for_me(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete_for_me',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/me/products/reviews/comments/{reviewCommentId}',
+				'params'           => ['reviewCommentId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete_metafield',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}',
+				'params'           => ['reviewCommentId', 'field', ],
 				'args'             => args
 			})
 
@@ -105,14 +144,14 @@ module Clayful
 
 		end
 
-		def self.push_to_metafield(*args)
+		def self.get(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/push',
-				'params'           => ['reviewCommentId', 'field', ],
+				'method_name'      => 'get',
+				'http_method'      => 'GET',
+				'path'             => '/v1/products/reviews/comments/{reviewCommentId}',
+				'params'           => ['reviewCommentId', ],
 				'args'             => args
 			})
 
@@ -131,6 +170,19 @@ module Clayful
 
 		end
 
+		def self.list(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'list',
+				'http_method'      => 'GET',
+				'path'             => '/v1/products/reviews/comments',
+				'params'           => [],
+				'args'             => args
+			})
+
+		end
+
 		def self.pull_from_metafield(*args)
 
 			Clayful.call_api({
@@ -138,6 +190,19 @@ module Clayful
 				'method_name'      => 'pull_from_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/pull',
+				'params'           => ['reviewCommentId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.push_to_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'push_to_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/push',
 				'params'           => ['reviewCommentId', 'field', ],
 				'args'             => args
 			})
@@ -165,71 +230,6 @@ module Clayful
 				'http_method'      => 'PUT',
 				'path'             => '/v1/me/products/reviews/comments/{reviewCommentId}',
 				'params'           => ['reviewCommentId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.delete(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'delete',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/products/reviews/comments/{reviewCommentId}',
-				'params'           => ['reviewCommentId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.delete_for_me(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'delete_for_me',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/me/products/reviews/comments/{reviewCommentId}',
-				'params'           => ['reviewCommentId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.cancel_flag_for_me(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'cancel_flag_for_me',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/me/products/reviews/comments/{reviewCommentId}/flags',
-				'params'           => ['reviewCommentId', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.delete_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'delete_metafield',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}',
-				'params'           => ['reviewCommentId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
-		def self.cancel_flag(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'cancel_flag',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/products/reviews/comments/{reviewCommentId}/flags/{customerId}',
-				'params'           => ['reviewCommentId', 'customerId', ],
 				'args'             => args
 			})
 

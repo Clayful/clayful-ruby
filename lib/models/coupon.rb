@@ -13,14 +13,14 @@ module Clayful
 			@@path
 		end
 
-		def self.list(*args)
+		def self.add_total_amount(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'list',
-				'http_method'      => 'GET',
-				'path'             => '/v1/coupons',
-				'params'           => [],
+				'method_name'      => 'add_total_amount',
+				'http_method'      => 'POST',
+				'path'             => '/v1/coupons/{couponId}/amount/total',
+				'params'           => ['couponId', ],
 				'args'             => args
 			})
 
@@ -39,6 +39,45 @@ module Clayful
 
 		end
 
+		def self.create(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'create',
+				'http_method'      => 'POST',
+				'path'             => '/v1/coupons',
+				'params'           => [],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/coupons/{couponId}',
+				'params'           => ['couponId', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.delete_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete_metafield',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/coupons/{couponId}/meta/{field}',
+				'params'           => ['couponId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
 		def self.get(*args)
 
 			Clayful.call_api({
@@ -52,19 +91,6 @@ module Clayful
 
 		end
 
-		def self.pull_from_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'pull_from_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/coupons/{couponId}/meta/{field}/pull',
-				'params'           => ['couponId', 'field', ],
-				'args'             => args
-			})
-
-		end
-
 		def self.increase_metafield(*args)
 
 			Clayful.call_api({
@@ -72,6 +98,32 @@ module Clayful
 				'method_name'      => 'increase_metafield',
 				'http_method'      => 'POST',
 				'path'             => '/v1/coupons/{couponId}/meta/{field}/inc',
+				'params'           => ['couponId', 'field', ],
+				'args'             => args
+			})
+
+		end
+
+		def self.list(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'list',
+				'http_method'      => 'GET',
+				'path'             => '/v1/coupons',
+				'params'           => [],
+				'args'             => args
+			})
+
+		end
+
+		def self.pull_from_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'pull_from_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/coupons/{couponId}/meta/{field}/pull',
 				'params'           => ['couponId', 'field', ],
 				'args'             => args
 			})
@@ -91,14 +143,14 @@ module Clayful
 
 		end
 
-		def self.delete_metafield(*args)
+		def self.update(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'delete_metafield',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/coupons/{couponId}/meta/{field}',
-				'params'           => ['couponId', 'field', ],
+				'method_name'      => 'update',
+				'http_method'      => 'PUT',
+				'path'             => '/v1/coupons/{couponId}',
+				'params'           => ['couponId', ],
 				'args'             => args
 			})
 

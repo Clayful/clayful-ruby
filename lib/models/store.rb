@@ -13,6 +13,19 @@ module Clayful
 			@@path
 		end
 
+		def self.delete_metafield(*args)
+
+			Clayful.call_api({
+				'model_name'       => @@name,
+				'method_name'      => 'delete_metafield',
+				'http_method'      => 'DELETE',
+				'path'             => '/v1/store/meta/{field}',
+				'params'           => ['field', ],
+				'args'             => args
+			})
+
+		end
+
 		def self.get(*args)
 
 			Clayful.call_api({
@@ -21,19 +34,6 @@ module Clayful
 				'http_method'      => 'GET',
 				'path'             => '/v1/store',
 				'params'           => [],
-				'args'             => args
-			})
-
-		end
-
-		def self.push_to_metafield(*args)
-
-			Clayful.call_api({
-				'model_name'       => @@name,
-				'method_name'      => 'push_to_metafield',
-				'http_method'      => 'POST',
-				'path'             => '/v1/store/meta/{field}/push',
-				'params'           => ['field', ],
 				'args'             => args
 			})
 
@@ -65,13 +65,13 @@ module Clayful
 
 		end
 
-		def self.delete_metafield(*args)
+		def self.push_to_metafield(*args)
 
 			Clayful.call_api({
 				'model_name'       => @@name,
-				'method_name'      => 'delete_metafield',
-				'http_method'      => 'DELETE',
-				'path'             => '/v1/store/meta/{field}',
+				'method_name'      => 'push_to_metafield',
+				'http_method'      => 'POST',
+				'path'             => '/v1/store/meta/{field}/push',
 				'params'           => ['field', ],
 				'args'             => args
 			})
